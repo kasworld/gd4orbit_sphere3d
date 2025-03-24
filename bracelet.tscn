@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxgyhv16ltuh6"]
+
+[ext_resource type="Script" uid="uid://c1t4hohcv3vxd" path="res://bracelet.gd" id="1_im0al"]
+
+[node name="Bracelet" type="Node3D"]
+script = ExtResource("1_im0al")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ue3plfh0xig2"]
+[gd_scene load_steps=7 format=3 uid="uid://ue3plfh0xig2"]
 
 [ext_resource type="Script" uid="uid://dkm0w35nly1l7" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://pqs6lcrw438x" path="res://image/skymap.hdr" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cxgyhv16ltuh6" path="res://bracelet.tscn" id="3_h2yge"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("2_0xm2m")
@@ -29,3 +30,5 @@ environment = SubResource("Environment_lquwl")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 shadow_enabled = true
 omni_range = 200.0
+
+[node name="Bracelet" parent="." instance=ExtResource("3_h2yge")]
