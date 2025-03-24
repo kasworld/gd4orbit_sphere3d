@@ -5,7 +5,7 @@ var orbitsphere_scene = preload("res://orbit_sphere/orbit_sphere.tscn")
 var TotalDiagonal := 100.0
 var TotalHeight := 100
 var co1 := Color.YELLOW
-var co2 := Color.RED
+var co2 := Color.MAGENTA
 
 func _ready() -> void:
 	make_orbit_sphere(90, TotalDiagonal/2 *1.5)
@@ -57,10 +57,12 @@ func orbit_pos() -> void:
 		n.position = Vector3.ZERO
 
 func _on_timer_timeout() -> void:
+	return
 	change_visible_count()
 
 func _process(delta: float) -> void:
 	move_camera(delta)
+	change_visible_count()
 
 func move_camera(_delta: float) -> void:
 	var t = -Time.get_unix_time_from_system() /2.3
