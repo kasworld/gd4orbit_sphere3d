@@ -56,10 +56,6 @@ func orbit_pos() -> void:
 	for n in orbsph_list:
 		n.position = Vector3.ZERO
 
-func _on_timer_timeout() -> void:
-	return
-	change_visible_count()
-
 func _process(delta: float) -> void:
 	move_camera(delta)
 	change_visible_count()
