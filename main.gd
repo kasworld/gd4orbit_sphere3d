@@ -4,6 +4,8 @@ var orbitsphere_scene = preload("res://orbit_sphere/orbit_sphere.tscn")
 
 var TotalDiagonal := 100.0
 var TotalHeight := 100
+var co1 := Color.YELLOW
+var co2 := Color.RED
 
 func _ready() -> void:
 	make_orbit_sphere(90, TotalDiagonal/2 *1.5)
@@ -24,8 +26,6 @@ func change_visible_count() -> void:
 
 var orbsph_list :Array = []
 func make_orbit_sphere(n :int, orbit_r :float) -> void:
-	var co1 := Color.YELLOW
-	var co2 := Color.RED
 	for i in n:
 		var ob_r = orbit_r
 		var sp_r = orbit_r / 50
@@ -45,7 +45,11 @@ func change_궤도(n :int, orbit_r :float) -> void:
 		o.hide()
 	for i in n:
 		var axis = Vector3.UP.rotated(Vector3.RIGHT.rotated(Vector3.UP,2*PI/n*i), PI/6 )
-		orbsph_list[i].궤도설정(orbit_r, 1, axis, 2*PI/n*i)
+		var rate := (i as float) / (n as float)
+		orbsph_list[i].궤도설정(orbit_r, 1, axis, 2*PI/n*i
+			).구색설정(co2.lerp(co1, rate)
+			).궤도색설정(co1.lerp(co2, rate)
+		)
 		orbsph_list[i].show()
 
 func orbit_pos() -> void:
