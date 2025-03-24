@@ -6,23 +6,18 @@ var orbitsphere_scene = preload("res://orbit_sphere/orbit_sphere.tscn")
 var orbit_r := 100.0
 var co1 := Color.MAGENTA
 var co2 := Color.YELLOW
-var visible_count :int = 3
-var count_inc :int = 1
-var orbsph_list :Array = []
 
 func init(n :int, ob_r :float) -> void:
 	orbit_r = ob_r
 	for i in n:
 		var sp_r = orbit_r / 50
 		var axis = Vector3.UP.rotated(Vector3.RIGHT.rotated(Vector3.UP,2*PI/n*i), PI/6 )
-		var orsp = orbitsphere_scene.instantiate(
-			).궤도설정(ob_r, 1, axis, 2*PI/n*i
-			).구설정(sp_r, 0, Vector3.UP
-		)
+		var orsp = orbitsphere_scene.instantiate().구설정(sp_r, 0, Vector3.UP	)
 		orbsph_list.append(orsp)
 		add_child(orsp)
 
-func change_궤도(n :int, orbit_r :float) -> void:
+var orbsph_list :Array = []
+func change_궤도(n :int) -> void:
 	for o in orbsph_list:
 		o.hide()
 	for i in n:
@@ -39,6 +34,8 @@ func change_궤도(n :int, orbit_r :float) -> void:
 func _process(delta: float) -> void:
 	change_visible_count()
 
+var visible_count :int = 3
+var count_inc :int = 1
 func change_visible_count() -> void:
 	visible_count += count_inc
 	if visible_count > orbsph_list.size():
@@ -47,4 +44,4 @@ func change_visible_count() -> void:
 	if visible_count < 3:
 		count_inc = 1
 		visible_count = 3
-	change_궤도(visible_count, orbit_r/2 *1.5)
+	change_궤도(visible_count)
