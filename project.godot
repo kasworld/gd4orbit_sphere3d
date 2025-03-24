@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="gd4orbit_sphere3d"
+run/main_scene="uid://ue3plfh0xig2"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+NamedColorList="*res://global/named_color_list.gd"
+Global3d="*res://global/global3d.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
