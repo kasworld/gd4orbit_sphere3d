@@ -2,8 +2,6 @@ extends Node3D
 class_name Bracelet2
 
 var orbit_r := 100.0
-var co1 := Color.MAGENTA
-var co2 := Color.YELLOW
 
 var multimesh :MultiMesh
 
@@ -27,7 +25,7 @@ func init(count :int, ob_r :float) -> void:
 	multi_ring.multimesh = multimesh
 	add_child(multi_ring)
 
-func change_궤도(n :int) -> void:
+func update_orbit(n :int, co1 :Color, co2 :Color) -> void:
 	multimesh.visible_instance_count = n
 	for i in multimesh.visible_instance_count:
 		#var axis = Vector3.UP.rotated(Vector3.RIGHT.rotated(Vector3.UP,2*PI/n*i), PI/6 )
@@ -45,6 +43,8 @@ func _process(delta: float) -> void:
 
 var visible_count :int = 3
 var count_inc :int = 1
+var color_from := Color.MAGENTA
+var color_to := Color.YELLOW
 func change_visible_count() -> void:
 	visible_count += count_inc
 	if visible_count > multimesh.instance_count:
@@ -53,4 +53,6 @@ func change_visible_count() -> void:
 	if visible_count < 3:
 		count_inc = 1
 		visible_count = 3
-	change_궤도(visible_count)
+		color_from = NamedColorList.color_list.pick_random()[0]
+		color_to = NamedColorList.color_list.pick_random()[0]
+	update_orbit(visible_count,color_from, color_to)
