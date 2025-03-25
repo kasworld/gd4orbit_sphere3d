@@ -32,6 +32,8 @@ func change_궤도(n :int) -> void:
 		orbsph_list[i].show()
 
 func _process(delta: float) -> void:
+	if orbsph_list.size() == 0:
+		return
 	change_visible_count()
 
 var visible_count :int = 3

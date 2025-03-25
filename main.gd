@@ -4,7 +4,8 @@ var TotalDiagonal := 100.0
 var TotalHeight := 100
 
 func _ready() -> void:
-	$Bracelet.init(180, TotalDiagonal/2 *1.5)
+	#$Bracelet.init(180, TotalDiagonal/2 *1.5)
+	$Bracelet2.init(180, TotalDiagonal/2 *1.5)
 
 func _process(delta: float) -> void:
 	move_camera(delta)
