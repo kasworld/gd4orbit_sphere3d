@@ -43,23 +43,24 @@ func _process(delta: float) -> void:
 
 var visible_count :int = 3
 var count_inc :int = 1
-var color1_from := Color.MAGENTA
-var color1_to := Color.YELLOW
-var color2_from := Color.MAGENTA
-var color2_to := Color.YELLOW
+var color1 := Color.MAGENTA
+var color2 := Color.YELLOW
+var color3 := Color.CYAN
+func shift_color() -> void:
+	color1 = color2
+	color2 = color3
+	color3 = NamedColorList.color_list.pick_random()[0]
+
 func change_visible_count() -> void:
 	visible_count += count_inc
 	if visible_count > multimesh.instance_count:
 		count_inc = -1
 		visible_count = multimesh.instance_count
-		color2_from = color2_to
-		color2_to = NamedColorList.color_list.pick_random()[0]
 	if visible_count < 3:
 		count_inc = 1
 		visible_count = 3
-		color1_from = color1_to
-		color1_to = NamedColorList.color_list.pick_random()[0]
+		shift_color()
 	var rate = (visible_count as float) / (multimesh.instance_count as float)
-	var color1 = color1_from.lerp(color1_to, rate)
-	var color2 = color2_from.lerp(color2_to, rate)
-	update_orbit(visible_count,color1, color2)
+	var co1 = color1.lerp(color2, rate)
+	var co2 = color2.lerp(color3, rate)
+	update_orbit(visible_count,co1, co2)
